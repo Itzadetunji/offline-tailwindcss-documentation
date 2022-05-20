@@ -44,8 +44,12 @@ export default function transformThemeValue(themeSection) {
     }
   }
 
-  return (value) => {
-    if (typeof value === 'function') value = value({})
+  return (value, opacityValue = undefined) => {
+    if (typeof value === 'function') {
+      value = value({
+        opacityValue,
+      })
+    }
 
     return value
   }
